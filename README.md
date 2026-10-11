@@ -1,51 +1,62 @@
-# BK Research Group, LIPE — GitHub Pages
+# BK Research Group, LIPE — website migration
 
-This is a responsive static-site migration of the [BK Research Group, LIPE Google Sites](https://sites.google.com/view/bkimgroup/home), using the separately uploaded Quarto laboratory website ZIP as an **information architecture and design reference**, not a source of lab content.
+A dependency-free static website hosted in the `labipe2023/labipe2023.github.io` GitHub repository.
 
-## Migration status (11 October 2026)
+- **Original website:** https://sites.google.com/view/bkimgroup/home
+- **Original Publications page:** https://sites.google.com/view/bkimgroup/publications
+- **Original Research page:** https://sites.google.com/view/bkimgroup/research
+- **GitHub Pages URL** (after Pages is enabled): https://labipe2023.github.io/
 
-| Section | Status |
-|---|---|
-| Publications: 25 referee-reviewed journal papers (J1–J25) | Migrated with each original DOI link |
-| Refereed conference proceedings: C1–C10 | Migrated from Google Sites; original listing does not provide DOI links |
-| Principal investigator: Prof. Boeun Kim | Profile, institution, office/contact, education, experience migrated |
-| Research | Five research areas and six applications migrated/organized |
-| Current members | **Pending**; original member page not available to crawler |
-| Home, Projects, News, Courses, Gallery | **Not fully migrated**; unavailable content is not invented |
+## Design
 
-### Bibliographic discrepancy corrected
+The site uses the original Google Sites information architecture and a restrained, Google Sites-like visual style: white sticky navigation, neutral content areas, simple text typography and original academic bibliography notation. This replaces the initial dark-gradient / tiled-card design.
 
-The original Google Sites listing associates **J20** (Automatica, 157, 111260, 2023; DOI `10.1016/j.automatica.2023.111260`) with the same title as J18. The **publisher's article page** verifies the actual J20 title is *Embedding active learning in batch-to-batch optimization using reinforcement learning*. This correction is explicitly documented on the GitHub Publications page.
+Navigation matches the original:
+Home · People (Professor / Current Members) · Research · Publications · Courses · News · Gallery.
 
-- Source: https://sites.google.com/view/bkimgroup/publications
-- Publisher: https://www.sciencedirect.com/science/article/abs/pii/S0005109823004211
+The user-supplied `kayhryu89.github.io-main.zip` served as the reference for **year headers, hanging bibliography layout and table of contents**. No people, photos or publications from the other laboratory were imported.
 
-Other journal metadata reflects what is displayed on Google Sites; publisher metadata was not independently verified for every DOI.
+The original **Home page visual imagery could not be verified** in the available retrieval environment. The neutral home cover is therefore a deliberate approximation, not a pixel-accurate copy of any unverified home banner image.
 
-## Website
+## Publications
 
-- `index.html`: responsive style, page templates, site data and navigation. The JavaScript `data` object holds publication, conference, professor and research data.
-- `README.md`: status and instructions.
-- GitHub repo: https://github.com/labipe2023/labipe2023.github.io
+The original public bibliography includes:
+- **25 Refereed Journal Articles** (J25 through J1), grouped by publication year with direct DOI links and source numbering
+- **10 Refereed Conference Proceedings** (C10 through C1), grouped by year
+- Original corresponding-author (`*`) and co-first-author (`†`) notation
+- Original front-cover article notes (where listed)
+- Sticky **left "On this page" table of contents** with links to both categories and every publication year (on mobile, a compact table of contents appears above the bibliography)
 
-### Local preview
+**J20 metadata note:** The original website repeats the title of J18, even though it points to an Automatica DOI. This migration uses the publisher-confirmed title *Embedding active learning in batch-to-batch optimization using reinforcement learning* for DOI `10.1016/j.automatica.2023.111260`, and explains that adjustment on the page.
+
+## Source files
+
+```
+index.html
+assets/
+  content.js    # Verified lab profile, research topics, 25 journal + 10 conference records
+  styles.css    # Google Sites-inspired responsive CSS
+  app.js        # Navigation, year groups, sticky TOC, page rendering
+README.md
+```
+
+**To edit content**, update the `data` object inside `assets/content.js`. The `publications` array has DOI and bibliographic metadata, `conferences` has proceedings. Do not change original identifiers when adding or updating a record. Sections that still lack verified sources show a neutral notice rather than invented information.
+
+## Local testing
+
+No Node/Quarto/Python dependencies are required for deployment. If Python is installed, run:
 
 ```powershell
 python -m http.server 8000
 ```
 
-Visit http://localhost:8000/ and http://localhost:8000/?page=publications.
+Open `http://localhost:8000/` and `http://localhost:8000/?page=publications`. Test year links (e.g. `#journal-2025` and `#conference-2022`), DOI links and the mobile navigation menu.
 
-### Deploy to GitHub Pages
+## GitHub Pages activation
 
-Go to **Settings → Pages → Build and deployment**, set **Deploy from a branch**, choose **main** and **/(root)**, then click **Save**.
+In repository **Settings → Pages → Build and deployment**:
+1. Select **Deploy from a branch**.
+2. Select **main** and **/(root)**.
+3. Save and verify the first successful deployment.
 
-Once GitHub confirms deployment, the Pages URL should be https://labipe2023.github.io/
-
-The connector can edit repository files but has not activated GitHub Pages settings. Therefore live deployment should not be considered verified.
-
-## Editing publications
-
-Find `publications:[...]` and `conferences:[...]` within the `const data` object in `index.html`. Every journal record contains `code`, `year`, `title`, `authors`, `journal`, `doi`, `url`, and `note`. Conference records contain `code`, `year`, `title`, `authors`, and `journal`.
-
-Author markers: `*` corresponding author, `†` co-first authors.
+The repository files have been updated, but the public Pages deployment is not asserted as verified.
