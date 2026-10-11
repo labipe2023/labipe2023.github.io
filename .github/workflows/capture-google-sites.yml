@@ -25,5 +25,6 @@ jobs:
           git add source-original/reference-screenshots
           if ! git diff --cached --quiet; then
             git commit -m "Record original Google Sites visual references for migration"
-            git push
+            git pull --rebase origin main
+            git push origin main
           fi
