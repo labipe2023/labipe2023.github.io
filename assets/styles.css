@@ -197,3 +197,110 @@ svg,img{max-width:100%}
   .member-info h3{font-size:16px}
   .member-en,.member-info p:not(.member-en){font-size:12px}
 }
+
+/* Final visual parity refinements from actual screenshots of the original site. */
+:root{--original-purple:#420078}
+.site-header{height:61px;--header:61px}
+.site-header .header-inner{width:100%;max-width:none;padding:0 28px}
+.site-name{font-weight:700;font-size:18px;color:#303338;letter-spacing:-.15px}
+.nav-link[aria-current="page"]{font-weight:700;color:#252525}
+.nav-link[aria-current="page"]::after,.nav-dropdown.active>summary::after{display:none}
+.nav-link,.nav-dropdown summary{font-size:14px}
+.container{width:min(calc(100% - 64px),1155px)}
+.page-heading{background:white;border:0;padding:93px 0 0}
+.page-heading .container{padding-bottom:97px;border-bottom:1px solid #d8dade}
+.page-heading h1{font-size:45px;font-weight:700;color:var(--original-purple);line-height:1.2;letter-spacing:-1px}
+.page-heading p{color:#333}
+.page-heading + .main-content{padding-top:48px}
+.content-section>h2{border:none}
+.home-cover{background:#fff;border:0}
+.home-cover .home-cover-inner{padding-top:83px;padding-bottom:112px}
+.home-cover h1{max-width:100%;font-size:clamp(34px,4.3vw,58px);color:var(--original-purple);font-weight:700;letter-spacing:-1.35px;line-height:1.2;margin:0}
+.home-main{padding-top:0;max-width:1155px}
+.home-welcome{text-align:center;font-family:Georgia,"Times New Roman",serif;border-top:1px solid #d8dade;border-bottom:1px solid #d8dade;padding:32px 0 119px;margin:0}
+.home-welcome h2{font-family:Georgia,"Times New Roman",serif;font-size:20px;line-height:1.55;font-weight:400;margin:0 0 12px}
+.home-welcome .intro-copy{font-family:Georgia,"Times New Roman",serif;font-size:19px;line-height:1.45;max-width:950px;margin:0 auto}
+.home-contact{border:none;margin-top:0;padding-top:34px;text-align:center;font-size:16px;line-height:1.9}
+.home-map{max-width:900px;margin:35px auto;background:#f5f5f5;border:1px solid #e5e5e5}
+.home-map iframe{display:block;width:100%;height:320px;border:0}
+.home-address{font-size:14px;line-height:1.8;margin:30px auto 0;color:#50545a}
+.research-page .content-section>h2{color:var(--original-purple);font-size:30px;font-weight:700;margin:0 0 10px;padding:0}
+.research-page .content-section{margin:0 0 85px}
+.research-page .plain-list{font:18px/1.83 Georgia,"Times New Roman",serif;list-style-type:square;padding-left:20px;margin-top:6px}
+.research-page .plain-list li{padding:1px 0}
+.research-page .plain-list.nested{margin-top:0;padding-left:35px}
+.research-page .text-muted{font:16px Georgia,"Times New Roman",serif;color:#333}
+.professor-page,.members-page,.gallery-page{max-width:1155px;width:min(calc(100% - 64px),1155px)}
+.professor-page{padding-top:105px}
+.professor-details h2,.members-page .alumni-section h2{color:var(--original-purple);font-weight:700}
+.professor-photo{max-width:210px;max-height:285px;border:0}
+.members-page{padding-top:105px}
+.members-grid{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:29px;row-gap:115px}
+.member-card{display:grid;grid-template-columns:168px minmax(0,1fr);column-gap:57px;min-height:225px;align-items:start}
+.member-card.lead-member{grid-column:1/-1;margin-bottom:13px}
+.member-card .member-photo{width:168px;height:225px;object-fit:cover;object-position:center top;border:0;background:#fff}
+.member-info{padding:12px 0 0}
+.member-info h3{color:var(--original-purple);font-size:22px;font-weight:700;letter-spacing:-.3px;margin:0 0 29px;line-height:1.35}
+.member-info p:not(.member-en){margin:0 0 16px;text-align:center;color:#252525;font-size:17px}
+.member-period{margin-top:14px!important}
+.members-page .alumni-section{margin-top:85px}
+.courses-page{padding-top:26px!important}
+.course-year{margin:0 0 86px}
+.course-year>h2{font-size:30px;font-weight:400;color:#282a2d;padding:0;border:0;margin:0 0 16px}
+.course-line{font:16px/1.6 Arial,Helvetica,sans-serif;margin:15px 0}
+.news-page{padding-top:202px;min-height:70vh}
+.news-year{margin:0 0 81px}
+.news-year>h2{font-size:30px;font-weight:400;color:#282a2d;padding:0;border:0;margin:0 0 16px}
+.news-item{display:block;padding:0;border:0;font-size:16px;margin:12px 0;line-height:1.5}
+.news-date{display:inline;color:#252525;font-weight:400;margin-right:4px}
+.news-text{display:inline;color:#27292b}
+.gallery-page{padding-top:91px}
+.gallery-page::before{content:"";display:block;border-top:1px solid #d8dade;margin-bottom:37px}
+.gallery-year{margin:0 0 60px}
+.gallery-year>h2{font:700 25px/1.3 Georgia,"Times New Roman",serif;color:var(--original-purple);margin:0 0 48px;padding:0;border:0}
+.gallery-photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 28px}
+.gallery-figure{margin:0;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:start}
+.gallery-figure a{display:block;width:100%;border:0;background:#fff}
+.gallery-figure .gallery-photo{height:405px;width:100%;display:block;object-fit:contain;background:#fff}
+.gallery-figure figcaption{text-align:center;font-size:13px;color:#252525;line-height:1.5;margin-top:6px}
+.gallery-event-no-photo{padding:14px 10px;color:#30363c;text-align:center;font-size:14px}
+.gallery-events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 24px}
+.gallery-events li{font-size:14px;border:none;padding:6px}
+@media(max-width:980px){
+ .members-grid{grid-template-columns:1fr;row-gap:45px}
+ .member-card.lead-member{grid-column:1}
+}
+@media(max-width:760px){
+ :root{--header:61px}
+ .site-header{height:61px}
+ .site-header .header-inner{padding:0 19px}
+ .container{width:calc(100% - 38px)}
+ .page-heading{padding:65px 0 0}
+ .page-heading .container{padding-bottom:63px}
+ .page-heading h1{font-size:35px}
+ .home-cover .home-cover-inner{padding-top:58px;padding-bottom:75px}
+ .home-cover h1{font-size:clamp(30px,7vw,46px);letter-spacing:-.65px}
+ .home-welcome{padding:28px 2px 68px}
+ .home-welcome h2{font-size:18px}
+ .home-welcome .intro-copy{font-size:16px;line-height:1.65}
+ .home-map iframe{height:250px}
+ .research-page .content-section>h2{font-size:25px}
+ .research-page .plain-list{font-size:16px}
+ .members-page,.professor-page,.gallery-page{width:calc(100% - 38px)}
+ .members-page,.professor-page{padding-top:58px}
+ .members-grid{grid-template-columns:1fr;row-gap:47px}
+ .member-card{grid-template-columns:minmax(100px,150px) minmax(0,1fr);gap:22px;min-height:200px}
+ .member-card .member-photo{width:100%;height:200px}
+ .member-info{padding-top:8px}
+ .member-info h3{font-size:18px;margin:0 0 17px}
+ .member-info p:not(.member-en){font-size:14px;text-align:left}
+ .course-year{margin-bottom:59px}
+ .course-year>h2,.news-year>h2{font-size:26px}
+ .news-page{padding-top:100px}
+ .news-year{margin-bottom:55px}
+ .news-item{font-size:14px}
+ .gallery-page{padding-top:65px}
+ .gallery-photo-grid{grid-template-columns:1fr;gap:22px}
+ .gallery-figure .gallery-photo{height:auto;max-height:390px}
+ .gallery-events{grid-template-columns:1fr}
+}
