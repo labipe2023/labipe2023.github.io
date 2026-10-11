@@ -144,56 +144,110 @@ function publications() {
       '<p class="back-to-top"><a href="#app">↑ Back to top</a></p>' +
     '</div></div>';
 }
+
+function photo(src, alt, cls="") {
+  const path = String(src || "");
+  const url = path.startsWith("source-original/images/") ? path : "";
+  return url ? '<img class="' + esc(cls) + '" src="' + esc(url) + '" alt="' + esc(alt) +
+    '" loading="lazy" decoding="async">' : "";
+}
 function home() {
-  const recent = data.publications.slice(0,3);
   return '<section class="home-cover"><div class="container home-cover-inner">' +
-      '<p class="institution">KONGJU NATIONAL UNIVERSITY · DEPARTMENT OF CHEMICAL ENGINEERING</p>' +
-      '<h1>BK Research Group, LIPE</h1>' +
-      '<p class="home-subtitle">Process Systems Engineering · Modeling · Optimization · Control</p>' +
+      '<h1>' + esc(data.home.title) + '</h1>' +
+      '<p class="home-subtitle">LIPE · 지능형공정공학연구실</p>' +
     '</div></section>' +
-    '<div class="container main-content">' +
-      part("Welcome", '<p class="intro-copy">' + esc(data.mission) + '</p>') +
-      part("Research Area", items(data.research.map(r => r.title), "research-list") +
-        '<a class="content-link" href="?page=research">Learn more about our research →</a>') +
-      part("Recent Publications", '<ol class="reference-list">' + recent.map(r => bibliographyItem(r)).join("") + '</ol>' +
-        '<a class="content-link" href="?page=publications">View all publications →</a>') +
-      part("Contact", '<p>' + esc(data.professor) + '<br>' + esc(data.department) + ', ' + esc(data.university) +
-        '<br><a href="mailto:' + esc(data.email) + '">' + esc(data.email) + '</a></p>') +
+    '<div class="container main-content home-main">' +
+      '<section class="content-section home-welcome">' +
+        '<h2>' + esc(data.home.welcome) + '</h2>' +
+        '<p class="intro-copy">' + esc(data.home.goal) + '</p>' +
+        '<p class="intro-copy">' + esc(data.home.contact.replace(" via bkim@kongju.ac.kr"," via ")) +
+          '<a href="mailto:' + esc(data.email) + '">' + esc(data.email) + '</a></p>' +
+      '</section>' +
+      '<section class="content-section home-contact">' +
+        '<p>' + data.home.addressKo.map(esc).join("<br>") + '</p>' +
+        '<p>' + esc(data.home.addressEn) + '</p>' +
+      '</section>' +
     '</div>';
 }
 function research() {
   return header("Research") + '<div class="container main-content slim">' +
     part("Research Area", items(data.research.map(r => r.title))) +
-    part("Applications", '<p class="text-muted">(Research directions will continue to be updated.)</p>' +
-      items(data.applications)) +
-    '<p class="site-info-line">Source: <a href="' + originalRoot + '/research" target="_blank" rel="noopener noreferrer">Original Research page ↗</a></p>' +
-    '</div>';
+    part("Applications", '<p class="text-muted">(will be updated)</p>' +
+      items(data.applications)) + '</div>';
 }
 function professor() {
   return header("Professor") + '<div class="container main-content slim">' +
-    part("Boeun Kim (김보은)", '<p>Assistant Professor, ' + esc(data.department) +
-      '<br>' + esc(data.university) + '</p>' +
-      '<p>Email: <a href="mailto:' + esc(data.email) + '">' + esc(data.email) + '</a>' +
-      '<br>Office: ' + esc(data.address) + '<br>Tel: +82-41-521-9356</p>') +
-    '<div class="columns">' +
-      part("Education", items(data.education, "profile-list")) +
-      part("Professional Experience", items(data.experience, "profile-list")) +
-    '</div></div>';
+    '<section class="professor-profile">' +
+      photo(data.professorPhoto,"Portrait of Professor Boeun Kim","professor-photo") +
+      '<div class="professor-details"><h2>김보은, Boeun Kim</h2>' +
+      '<p>조교수 / Assistant Professor<br>공주대학교 천안공과대학 화학공학부<br>' +
+      esc(data.department) + ',<br>' + esc(data.university) + '</p>' +
+      '<p>Office: 9공학관 1001호<br>Tel: ' + esc(data.phone) + '<br>' +
+      'Email: <a href="mailto:' + esc(data.email) + '">' + esc(data.email) + '</a></p></div></section>' +
+    part("Education", items(data.education, "profile-list")) +
+    part("Professional Experiences", items(data.experience, "profile-list")) + '</div>';
+}
+function memberCard(member) {
+  return '<article class="member-card">' +
+    photo(member.image, member.name + ' / ' + member.nameEn,"member-photo") +
+    '<div class="member-info"><h3>' + esc(member.name) + '</h3>' +
+      '<p class="member-en">' + esc(member.nameEn) + '</p>' +
+      '<p>' + esc(member.role) + '<br><span class="text-muted">(' + esc(member.period) + ')</span></p>' +
+    '</div></article>';
+}
+function alumniRow(alum) {
+  return '<li class="alumni-item"><strong>' + esc(alum.name) + '</strong> (' + esc(alum.nameEn) + ')' +
+    '<div class="alumni-work">“' + esc(alum.work) + '”</div>' +
+    '<div class="text-muted">' + esc(alum.period) + '</div></li>';
 }
 function members() {
-  const msg = '<p class="empty-note">Current member profiles and photos will be added after the original member information has been verified.</p>';
+  const groupList=data.members.map(memberCard).join("");
   return header("Current Members") + '<div class="container main-content slim">' +
-    part("Group Members", msg) +
-    '<p>Principal Investigator: <a href="?page=professor">' + esc(data.professor) + '</a></p></div>';
+    '<section class="content-section"><div class="members-grid">' + groupList + '</div></section>' +
+    '<section class="content-section"><h2>Alumni</h2>' +
+      '<h3>Graduate</h3><ul class="alumni-list">' +
+      data.alumni.filter(x=>x.category==="Graduate").map(alumniRow).join("") + '</ul>' +
+      '<h3>Undergraduate</h3><ul class="alumni-list">' +
+      data.alumni.filter(x=>x.category==="Undergraduate").map(alumniRow).join("") + '</ul>' +
+    '</section></div>';
 }
-function unverified(name) {
-  const origin = originalRoot + "/" + name.toLowerCase();
-  return header(name) + '<div class="container main-content slim">' +
-    '<p class="empty-note">The original ' + esc(name) +
-    ' content has not yet been confirmed for migration. No entries or photos have been invented.</p>' +
-    '<p><a class="content-link" href="' + safeUrl(origin) +
-    '" target="_blank" rel="noopener noreferrer">View the original ' + esc(name) + ' page ↗</a></p></div>';
+function courses() {
+  return header("Courses") + '<div class="container main-content slim">' +
+    data.courses.map(yr =>
+      '<section class="course-year">' +
+      '<h2>' + esc(yr.year) + '</h2>' +
+      '<div class="course-terms">' + yr.terms.map(term => '<div class="course-term">' +
+      '<strong>' + esc(term.name) + '</strong><span class="course-list">' +
+      (term.classes.length ? term.classes.map(esc).join(', ') : '') +
+      '</span></div>').join("") + '</div></section>').join("") +
+    '</div>';
 }
+function news() {
+  const years = [...new Set(data.news.map(n=>n.date.slice(0,4)))].sort().reverse();
+  return header("News") + '<div class="container main-content slim"><div class="news-list">' +
+    years.map(year => '<section class="news-year">' +
+      '<h2>' + year + '</h2>' +
+      data.news.filter(n=>n.date.startsWith(year)).map(n=>
+        '<div class="news-item"><span class="news-date">' + esc(n.date.slice(5).replace("-", ". ")) +
+        '.</span><span class="news-text">' + esc(n.title) + '</span></div>').join("") +
+      '</section>').join("") + '</div></div>';
+}
+function gallery() {
+  const all = data.galleryImages || [];
+  return header("Gallery") + '<div class="container main-content slim gallery-page">' +
+    data.gallery.map((year, i) => '<section class="gallery-year">' +
+      '<h2>' + esc(year.year) + '</h2>' +
+      (year.events.length ? '<ul class="gallery-events">' +
+         year.events.map(label=>'<li>' + esc(label) + '</li>').join("") + '</ul>' : '') +
+      '</section>').join("") +
+    '<section class="gallery-photos"><h2>Photos</h2>' +
+      '<p class="text-muted">Photos copied from the original LIPE Gallery page. The original site does not label each image in the accessible HTML, so individual event captions have not been assigned.</p>' +
+      '<div class="gallery-photo-grid">' +
+      all.map((img,i)=>'<a href="' + esc(img) + '" target="_blank" rel="noopener noreferrer" aria-label="Open gallery photo ' + (i+1) + '">' +
+         photo(img,"LIPE group gallery photograph "+(i+1),"gallery-photo")+'</a>').join("") +
+      '</div></section></div>';
+}
+
 function updateToc() {
   const nav = document.querySelector(".toc nav");
   if (!nav || !("IntersectionObserver" in window)) return;
@@ -211,7 +265,7 @@ function render() {
   const title = {home:"Home",professor:"Professor",members:"Current Members",research:"Research",
     publications:"Publications",courses:"Courses",news:"News",gallery:"Gallery"}[page];
   document.title = title === "Home" ? "BK Research Group, LIPE" : title + " - BK Research Group, LIPE";
-  const views = {home, professor, members, research, publications};
+  const views = {home, professor, members, research, publications, courses, news, gallery};
   document.querySelector("#app").innerHTML = views[page] ? views[page]() :
     unverified(title);
   document.querySelector("#year").textContent = new Date().getFullYear();
