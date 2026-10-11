@@ -154,29 +154,36 @@ function photo(src, alt, cls="") {
 function home() {
   return '<section class="home-cover"><div class="container home-cover-inner">' +
       '<h1>' + esc(data.home.title) + '</h1>' +
-      '<p class="home-subtitle">LIPE · 지능형공정공학연구실</p>' +
     '</div></section>' +
     '<div class="container main-content home-main">' +
       '<section class="content-section home-welcome">' +
         '<h2>' + esc(data.home.welcome) + '</h2>' +
         '<p class="intro-copy">' + esc(data.home.goal) + '</p>' +
-        '<p class="intro-copy">' + esc(data.home.contact.replace(" via bkim@kongju.ac.kr"," via ")) +
-          '<a href="mailto:' + esc(data.email) + '">' + esc(data.email) + '</a></p>' +
       '</section>' +
       '<section class="content-section home-contact">' +
-        '<p>' + data.home.addressKo.map(esc).join("<br>") + '</p>' +
-        '<p>' + esc(data.home.addressEn) + '</p>' +
-      '</section>' +
-    '</div>';
+        '<p>' + esc(data.home.contact.replace(" via bkim@kongju.ac.kr", " via ")) +
+          '<a href="mailto:' + esc(data.email) + '">' + esc(data.email) + '</a></p>' +
+        '<div class="home-map">' +
+          '<iframe title="LIPE laboratory location" loading="lazy" referrerpolicy="no-referrer-when-downgrade" ' +
+          'src="https://www.google.com/maps?q=Kongju%20National%20University%20Cheonan%20Building%209&amp;output=embed"></iframe>' +
+        '</div><div class="home-address">' + data.home.addressKo.map(esc).join("<br>") +
+        '<br>' + esc(data.home.addressEn) + '</div>' +
+      '</section></div>';
 }
 function research() {
-  return header("Research") + '<div class="container main-content slim">' +
+  return header("Research") + '<div class="container main-content slim research-page">' +
     part("Research Area", items(data.research.map(r => r.title))) +
     part("Applications", '<p class="text-muted">(will be updated)</p>' +
-      items(data.applications)) + '</div>';
+      '<ul class="plain-list">' +
+        '<li>' + esc(data.applications[0]) +
+          '<ul class="plain-list nested">' + data.applications.slice(1,4).map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul></li>' +
+        '<li>' + esc(data.applications[4]) + '</li>' +
+        '<li>' + esc(data.applications[5]) +
+          '<ul class="plain-list nested">' + data.applications.slice(6).map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul></li>' +
+      '</ul>') + '</div>';
 }
 function professor() {
-  return header("Professor") + '<div class="container main-content slim">' +
+  return '<div class="container main-content slim professor-page">' +
     '<section class="professor-profile">' +
       photo(data.professorPhoto,"Portrait of Professor Boeun Kim","professor-photo") +
       '<div class="professor-details"><h2>김보은, Boeun Kim</h2>' +
@@ -187,12 +194,12 @@ function professor() {
     part("Education", items(data.education, "profile-list")) +
     part("Professional Experiences", items(data.experience, "profile-list")) + '</div>';
 }
-function memberCard(member) {
-  return '<article class="member-card">' +
-    photo(member.image, member.name + ' / ' + member.nameEn,"member-photo") +
-    '<div class="member-info"><h3>' + esc(member.name) + '</h3>' +
-      '<p class="member-en">' + esc(member.nameEn) + '</p>' +
-      '<p>' + esc(member.role) + '<br><span class="text-muted">(' + esc(member.period) + ')</span></p>' +
+function memberCard(member,lead=false) {
+  return '<article class="member-card' + (lead ? ' lead-member' : '') + '">' +
+    photo(member.image,member.name + ' / ' + member.nameEn,"member-photo") +
+    '<div class="member-info"><h3>' + esc(member.name) + ' (' + esc(member.nameEn) + ')</h3>' +
+      '<p>' + esc(member.role) + '</p>' +
+      '<p class="member-period">(' + esc(member.period) + ')</p>' +
     '</div></article>';
 }
 function alumniRow(alum) {
@@ -201,53 +208,54 @@ function alumniRow(alum) {
     '<div class="text-muted">' + esc(alum.period) + '</div></li>';
 }
 function members() {
-  const groupList=data.members.map(memberCard).join("");
-  return header("Current Members") + '<div class="container main-content slim">' +
-    '<section class="content-section"><div class="members-grid">' + groupList + '</div></section>' +
-    '<section class="content-section"><h2>Alumni</h2>' +
-      '<h3>Graduate</h3><ul class="alumni-list">' +
-      data.alumni.filter(x=>x.category==="Graduate").map(alumniRow).join("") + '</ul>' +
-      '<h3>Undergraduate</h3><ul class="alumni-list">' +
-      data.alumni.filter(x=>x.category==="Undergraduate").map(alumniRow).join("") + '</ul>' +
-    '</section></div>';
+  return '<div class="container main-content slim members-page">' +
+    '<section class="content-section"><div class="members-grid">' +
+      data.members.map((m,i)=>memberCard(m,i===0)).join("") +
+    '</div></section><section class="content-section alumni-section">' +
+      '<h2>Alumni</h2><h3>Graduate</h3><ul class="alumni-list">' +
+        data.alumni.filter(x=>x.category==="Graduate").map(alumniRow).join("") +
+      '</ul><h3>Undergraduate</h3><ul class="alumni-list">' +
+        data.alumni.filter(x=>x.category==="Undergraduate").map(alumniRow).join("") +
+      '</ul></section></div>';
 }
 function courses() {
-  return header("Courses") + '<div class="container main-content slim">' +
-    data.courses.map(yr =>
-      '<section class="course-year">' +
+  return header("Courses") + '<div class="container main-content slim courses-page">' +
+    data.courses.map(yr=>'<section class="course-year">' +
       '<h2>' + esc(yr.year) + '</h2>' +
-      '<div class="course-terms">' + yr.terms.map(term => '<div class="course-term">' +
-      '<strong>' + esc(term.name) + '</strong><span class="course-list">' +
-      (term.classes.length ? term.classes.map(esc).join(', ') : '') +
-      '</span></div>').join("") + '</div></section>').join("") +
-    '</div>';
+      yr.terms.map(term=>'<p class="course-line">' + esc(term.name) + ' - ' +
+         term.classes.map(esc).join(', ') + '</p>').join("") +
+    '</section>').join("") + '</div>';
 }
 function news() {
-  const years = [...new Set(data.news.map(n=>n.date.slice(0,4)))].sort().reverse();
-  return header("News") + '<div class="container main-content slim"><div class="news-list">' +
-    years.map(year => '<section class="news-year">' +
+  const years=[...new Set(data.news.map(n=>n.date.slice(0,4)))].sort().reverse();
+  return '<div class="container main-content slim news-page">' +
+    years.map(year=>'<section class="news-year">' +
       '<h2>' + year + '</h2>' +
       data.news.filter(n=>n.date.startsWith(year)).map(n=>
-        '<div class="news-item"><span class="news-date">' + esc(n.date.slice(5).replace("-", ". ")) +
-        '.</span><span class="news-text">' + esc(n.title) + '</span></div>').join("") +
-      '</section>').join("") + '</div></div>';
+        '<p class="news-item"><span class="news-date">' +
+          esc(n.date.slice(5).replace("-", ". ")) + '. </span> ' +
+          '<span class="news-text">' + esc(n.title) + '</span></p>').join("") +
+      '</section>').join("") + '</div>';
 }
 function gallery() {
-  const all = data.galleryImages || [];
-  return header("Gallery") + '<div class="container main-content slim gallery-page">' +
-    data.gallery.map((year, i) => '<section class="gallery-year">' +
-      '<h2>' + esc(year.year) + '</h2>' +
-      (year.events.length ? '<ul class="gallery-events">' +
-         year.events.map(label=>'<li>' + esc(label) + '</li>').join("") + '</ul>' : '') +
-      '</section>').join("") +
-    '<section class="gallery-photos"><h2>Photos</h2>' +
-      '<p class="text-muted">Photos copied from the original LIPE Gallery page. The original site does not label each image in the accessible HTML, so individual event captions have not been assigned.</p>' +
-      '<div class="gallery-photo-grid">' +
-      all.map((img,i)=>'<a href="' + esc(img) + '" target="_blank" rel="noopener noreferrer" aria-label="Open gallery photo ' + (i+1) + '">' +
-         photo(img,"LIPE group gallery photograph "+(i+1),"gallery-photo")+'</a>').join("") +
-      '</div></section></div>';
+  const photos=data.galleryImages||[];
+  return '<div class="container main-content slim gallery-page">' +
+    data.gallery.map(yr=>{
+      let galleryBody="";
+      if(yr.year==="2025"){
+        galleryBody='<div class="gallery-photo-grid">' +
+          yr.events.map((evt,i)=> photos[i] ?
+            '<figure class="gallery-figure"><a href="' + esc(photos[i]) +
+              '" target="_blank" rel="noopener noreferrer" aria-label="View original gallery photograph">' +
+              photo(photos[i],evt,"gallery-photo")+'</a><figcaption>'+esc(evt)+'</figcaption></figure>' :
+            '<div class="gallery-event-no-photo">' + esc(evt) + '</div>'
+          ).join("")+'</div>';
+      }else if(yr.events.length){
+        galleryBody='<ul class="gallery-events">'+yr.events.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>';
+      }
+      return '<section class="gallery-year"><h2>'+esc(yr.year)+'</h2>'+galleryBody+'</section>';
+    }).join("")+'</div>';
 }
-
 function updateToc() {
   const nav = document.querySelector(".toc nav");
   if (!nav || !("IntersectionObserver" in window)) return;
