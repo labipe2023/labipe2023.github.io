@@ -237,24 +237,23 @@ function news() {
           '<span class="news-text">' + esc(n.title) + '</span></p>').join("") +
       '</section>').join("") + '</div>';
 }
+function galleryCard(evt) {
+  const files=evt.photos || [];
+  const img=files[0]||"";
+  return '<figure class="gallery-figure"><a href="' + esc(img) +
+    '" target="_blank" rel="noopener noreferrer" aria-label="View full-size photo: ' + esc(evt.title) + '">' +
+    photo(img,evt.title,"gallery-photo")+'</a><figcaption>'+esc(evt.title)+'</figcaption>' +
+    (files.length>1?'<div class="gallery-secondary-photos" aria-label="More photographs of ' +
+      esc(evt.title) + '">' + files.slice(1).map((x,i)=>
+        '<a href="'+esc(x)+'" target="_blank" rel="noopener noreferrer" aria-label="Additional photo '+(i+2)+': '+esc(evt.title)+'">'+
+          photo(x,evt.title+" — additional photograph","gallery-secondary-photo")+'</a>').join("")+
+    '</div>':"")+'</figure>';
+}
 function gallery() {
-  const photos=data.galleryImages||[];
   return '<div class="container main-content slim gallery-page">' +
-    data.gallery.map(yr=>{
-      let galleryBody="";
-      if(yr.year==="2025"){
-        galleryBody='<div class="gallery-photo-grid">' +
-          yr.events.map((evt,i)=> photos[i] ?
-            '<figure class="gallery-figure"><a href="' + esc(photos[i]) +
-              '" target="_blank" rel="noopener noreferrer" aria-label="View original gallery photograph">' +
-              photo(photos[i],evt,"gallery-photo")+'</a><figcaption>'+esc(evt)+'</figcaption></figure>' :
-            '<div class="gallery-event-no-photo">' + esc(evt) + '</div>'
-          ).join("")+'</div>';
-      }else if(yr.events.length){
-        galleryBody='<ul class="gallery-events">'+yr.events.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>';
-      }
-      return '<section class="gallery-year"><h2>'+esc(yr.year)+'</h2>'+galleryBody+'</section>';
-    }).join("")+'</div>';
+    data.gallery.map(yr=>'<section class="gallery-year"><h2>'+esc(yr.year)+'</h2>' +
+      (yr.events.length ? '<div class="gallery-photo-grid">' + yr.events.map(galleryCard).join("") +
+       '</div>' : '') + '</section>').join("")+'</div>';
 }
 function updateToc() {
   const nav = document.querySelector(".toc nav");
