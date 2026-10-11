@@ -83,22 +83,12 @@ function yearlyReferences(records, type) {
       pubList.map(x => bibliographyItem(x, type)).join("") + '</ol></div>';
   }).join("");
 }
-function yearToc(records, type) {
-  return groupedYears(records).map(yr =>
-    '<a class="toc-year" href="#' + type + '-' + yr + '">' + esc(yr) + ' <small>(' +
-    records.filter(x => yearOf(x) === yr).length + ')</small></a>').join("");
-}
 function toc() {
-  return '<aside class="toc" aria-label="Publication page navigation"><div class="toc-title">On this page</div>' +
-    '<nav><div class="toc-categories">' +
-      '<a class="toc-category" href="#journals">Refereed Journal Articles</a>' +
-      '<a class="toc-category" href="#proceedings">Refereed Conference Proceedings</a>' +
-    '</div><div class="toc-year-lists">' +
-      '<div class="toc-list-heading">Journal Articles by Year</div>' +
-      yearToc(data.publications, "journal") +
-      '<div class="toc-list-heading">Conference Proceedings by Year</div>' +
-      yearToc(data.conferences, "conference") +
-    '</div></nav></aside>';
+  return '<aside class="toc" aria-label="Publication page navigation">' +
+    '<nav class="toc-categories" aria-label="Jump to publication section">' +
+      '<a class="toc-category" href="#journals">Journal Articles</a>' +
+      '<a class="toc-category" href="#proceedings">Conference Proceedings</a>' +
+    '</nav></aside>';
 }
 function publications() {
   return '<div class="container main-content publications-layout">' + toc() +
