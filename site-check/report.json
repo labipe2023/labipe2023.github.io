@@ -1,0 +1,200 @@
+{
+  "checked_at": "2026-10-11T16:10:51.731357+00:00",
+  "pages": {
+    "home": {
+      "documentTitle": "BK Research Group, LIPE",
+      "headline": "Laboratory for Intelligent Process Engineering",
+      "mainText": "Laboratory for Intelligent Process Engineering\nWelcome to Laboratory for Intelligent Process Engineering (LIPE) 지능형공정공학연구실!\n\nThe goal of research in the BK group is to develop computational methods and tools for problems in the process systems engineering (PSE) field.\n\nIf you are interested in our research group, please feel free to contact Prof. Boeun Kim, 김보은 via bkim@kongju.ac.kr\n\n충청남도 천안시 서북구 천안대로1223-24\n공주대학교 천안공과대학 제9공학관 #1001/#1009\n1223-24 Cheonan-daero, Seobuk-gu, Cheonan, Chungcheongnam",
+      "members": 0,
+      "galleryEvents": 0,
+      "news": 0,
+      "courses": 0,
+      "refs": 0,
+      "doi": 0,
+      "images": [],
+      "headerTitleColor": "rgb(66, 0, 120)",
+      "url": "https://labipe2023.github.io/",
+      "http": 200,
+      "jsErrors": []
+    },
+    "professor": {
+      "documentTitle": "Professor - BK Research Group, LIPE",
+      "headline": "",
+      "mainText": "김보은, Boeun Kim\n\n조교수 / Assistant Professor\n공주대학교 천안공과대학 화학공학부\nDepartment of Chemical Engineering,\nKongju National University\n\nOffice: 9공학관 1001호\nTel: +82-41-521-9356\nEmail: bkim@kongju.ac.kr\n\nEducation\nPh.D. in Chemical & Biomolecular Engineering, KAIST, Daejeon, Korea (2019; Advisor: Professor Jay H. Lee)\nM.S. in Chemical & Biomolecular Engineering, KAIST, Daejeon, Korea (2015; Advisor: Professor Jay H. Lee)\nB.S. in Chemical & Biomolecular Engineering, KAIST, Daejeon, Korea (2013)\nProfessional E",
+      "members": 0,
+      "galleryEvents": 0,
+      "news": 0,
+      "courses": 0,
+      "refs": 0,
+      "doi": 0,
+      "images": [
+        {
+          "src": "source-original/images/professor-01.jpg",
+          "loaded": true
+        }
+      ],
+      "headerTitleColor": "",
+      "url": "https://labipe2023.github.io/?page=professor",
+      "http": 200,
+      "jsErrors": []
+    },
+    "members": {
+      "documentTitle": "Current Members - BK Research Group, LIPE",
+      "headline": "",
+      "mainText": "하창헌 (Ha, Changheon)\n\nIntegrated B.S.–M.S.\n\n(2025 Spring –)\n\n정동석 (Jeong, Dongseok)\n\nUndergraduate\n\n(2025 Spring –)\n\n최현수 (Choi, Hyen Su)\n\nUndergraduate\n\n(2025 Winter –)\n\n정수연 (Jeong, Su Yeon)\n\nUndergraduate\n\n(2026 Spring –)\n\n정장훈 (Jung, Jang Hun)\n\nUndergraduate\n\n(2026 Spring –)\n\nAlumni\nGraduate\n박찬경 (Park, Chan Gyeong)\n“An Adaptive Subset Selection Approach for Simultaneous State and Parameter Estimation with Moving Horizon Estimation”\n2024.01–2026.02\nUndergraduate\n기수지 (Ki, Su Zie)\n“Mathematical mode",
+      "members": 5,
+      "galleryEvents": 0,
+      "news": 0,
+      "courses": 0,
+      "refs": 0,
+      "doi": 0,
+      "images": [
+        {
+          "src": "source-original/images/current-members-01.jpg",
+          "loaded": true
+        },
+        {
+          "src": "source-original/images/current-members-02.png",
+          "loaded": true
+        },
+        {
+          "src": "source-original/images/current-members-03.png",
+          "loaded": true
+        },
+        {
+          "src": "source-original/images/current-members-04.jpg",
+          "loaded": true
+        },
+        {
+          "src": "source-original/images/current-members-05.png",
+          "loaded": true
+        }
+      ],
+      "headerTitleColor": "",
+      "url": "https://labipe2023.github.io/?page=members",
+      "http": 200,
+      "jsErrors": []
+    },
+    "research": {
+      "documentTitle": "Research - BK Research Group, LIPE",
+      "headline": "Research",
+      "mainText": "Research\nResearch Area\nProcess modeling and identification\nReal-time optimization and control\nScheduling and planning\nProcess synthesis and analysis\nMachine learning for PSE\nApplications\n\n(will be updated)\n\nRenewable energy/production system\nBiorefinery, pharmaceutical, battery, waste recycling, etc.\nCarbon capture and utilization\nHydrogen generation/storage\nReaction/separation network synthesis\nSmart manufacturing\nOnline monitoring/control\nFlexible operation\nOnline scheduling",
+      "members": 0,
+      "galleryEvents": 0,
+      "news": 0,
+      "courses": 0,
+      "refs": 0,
+      "doi": 0,
+      "images": [],
+      "headerTitleColor": "rgb(66, 0, 120)",
+      "url": "https://labipe2023.github.io/?page=research",
+      "http": 200,
+      "jsErrors": []
+    },
+    "publications": {
+      "documentTitle": "Publications - BK Research Group, LIPE",
+      "headline": "",
+      "mainText": "Journal Articles\nConference Proceedings\nRefereed Journal Articles\n\n* Corresponding author, † Co-first authors\n\n2025\n[J25]\nKim, B.*, K. H. Ryu*, “A Variance-Weighted Curvature Criterion for Sequential Experimental Design,” Korean Journal of Chemical Engineering, 2025. doi.org/10.1007/s11814-025-00543-9 ↗\n[J24]\nIkonen, T. J., B. Kim, C. T. Maravelias, I. Harjunkoski*, “Supervised Learning of the Optimal Objective Function Value in Chemical Production Scheduling,” Industrial & Engineering Chemistry",
+      "members": 0,
+      "galleryEvents": 0,
+      "news": 0,
+      "courses": 0,
+      "refs": 35,
+      "doi": 25,
+      "images": [],
+      "headerTitleColor": "",
+      "url": "https://labipe2023.github.io/?page=publications",
+      "http": 200,
+      "jsErrors": []
+    },
+    "courses": {
+      "documentTitle": "Courses - BK Research Group, LIPE",
+      "headline": "Courses",
+      "mainText": "Courses\n2026\n\nSpring - 화공데이터분석및AI기초, 스마트코딩Ⅰ, 화공안전공학\n\nFall -\n\n2025\n\nSpring - 화공데이터분석및AI기초, 스마트코딩Ⅰ, 화공안전공학\n\nFall - 스마트코딩Ⅱ, 공정제어, 공업화학기초실험Ⅰ\n\n2024\n\nSpring - 화공양론, 스마트코딩Ⅰ, 화공안전공학\n\nFall - 스마트코딩Ⅱ, 공정제어, 화공머신러닝(대학원)\n\n2023\n\nFall - 스마트코딩Ⅱ, 공정제어, 공업화학기초실험Ⅰ",
+      "members": 0,
+      "galleryEvents": 0,
+      "news": 0,
+      "courses": 4,
+      "refs": 0,
+      "doi": 0,
+      "images": [],
+      "headerTitleColor": "rgb(66, 0, 120)",
+      "url": "https://labipe2023.github.io/?page=courses",
+      "http": 200,
+      "jsErrors": []
+    },
+    "news": {
+      "documentTitle": "News - BK Research Group, LIPE",
+      "headline": "",
+      "mainText": "2026\n\n03. 24. LIPE의 새로운 멤버 최현수, 정수연 학생을 환영합니다 💜\n\n02. 12. LIPE의 찬경 학생과 성민 학생의 졸업을 축하합니다 🧑‍🎓💐\n\n2025\n\n03. 24. LIPE의 새로운 멤버 정동석, 하창헌, 이시연, 오강록 학생을 환영합니다 ⭐\n\n02. 17. LIPE의 수지 학생의 졸업을 축하합니다 🧑‍🎓🎉\n\n2024\n\n09. 09. LIPE의 새로운 멤버 이성민 학생을 환영합니다! 👏\n\n03. 01. LIPE의 새로운 멤버 박찬경 학생과 기수지 학생을 환영합니다! 💌\n\n2023\n\n09. 01. LIPE Opens!",
+      "members": 0,
+      "galleryEvents": 0,
+      "news": 7,
+      "courses": 0,
+      "refs": 0,
+      "doi": 0,
+      "images": [],
+      "headerTitleColor": "",
+      "url": "https://labipe2023.github.io/?page=news",
+      "http": 200,
+      "jsErrors": []
+    },
+    "gallery": {
+      "documentTitle": "Gallery - BK Research Group, LIPE",
+      "headline": "",
+      "mainText": "2026\n2025\n한국화학공학회 2025 가을\n학부 졸업논문 발표\n여름 회식\n여수\n제 1회 공정한 만남 워크샵\n제 2회 공정한 만남 워크샵\n2024\n스승의 날\n한국화학공학회 2024 가을",
+      "members": 0,
+      "galleryEvents": 8,
+      "news": 0,
+      "courses": 0,
+      "refs": 0,
+      "doi": 0,
+      "images": [
+        {
+          "src": "source-original/images/gallery-01.jpg",
+          "loaded": true
+        },
+        {
+          "src": "source-original/images/gallery-02.jpg",
+          "loaded": true
+        },
+        {
+          "src": "source-original/images/gallery-extra-01.jpg",
+          "loaded": true
+        },
+        {
+          "src": "source-original/images/gallery-03.jpg",
+          "loaded": true
+        },
+        {
+          "src": "source-original/images/gallery-04.jpg",
+          "loaded": true
+        },
+        {
+          "src": "source-original/images/gallery-05.jpg",
+          "loaded": true
+        },
+        {
+          "src": "source-original/images/gallery-extra-02.jpg",
+          "loaded": true
+        },
+        {
+          "src": "source-original/images/gallery-extra-03.jpg",
+          "loaded": true
+        },
+        {
+          "src": "source-original/images/gallery-extra-04.jpg",
+          "loaded": true
+        },
+        {
+          "src": "source-original/images/gallery-extra-05.jpg",
+          "loaded": true
+        }
+      ],
+      "headerTitleColor": "",
+      "url": "https://labipe2023.github.io/?page=gallery",
+      "http": 200,
+      "jsErrors": []
+    }
+  }
+}
