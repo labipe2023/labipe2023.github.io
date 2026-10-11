@@ -17,9 +17,9 @@ This repository contains a dependency-free, responsive HTML/CSS/JavaScript migra
 | Publications | 25 journal papers with DOI links and 10 conference proceedings; original J/C numbering retained |
 | Courses | Semester-by-semester courses from 2023 to 2026 |
 | News | Seven announcements from 2023 to 2026 |
-| Gallery | Events organized by 2026 / 2025 / 2024, with **10 original photographs** from the public gallery and verified captions |
+| Gallery | Events organized by 2026 / 2025 / 2024, with **12 distinct original photographs**, grouped by their verified event captions and slide order |
 
-**Image sources:** `source-original/images/` contains the publicly published originals (professor photo, member portraits, gallery/event images, and two publication-related images). The website loads them from the repository instead of depending on long-lived Google Sites media URLs. The page-text extraction with URLs and image provenance is in `source-original/manifest.json` and `source-original/rendered-gallery.json`. Original layout comparison screenshots are kept under `source-original/reference-screenshots/`.
+**Image sources:** `source-original/images/` contains copies of the publicly published originals (the professor portrait, five member portraits, twelve distinct gallery photos, additional responsive duplicates captured during verification, and two publication-related images). The website loads them from the repository instead of depending on long-lived Google Sites media URLs. The page-text extraction with URLs and image provenance is in `source-original/manifest.json` and `source-original/rendered-gallery.json, source-original/gallery-browser-audit.json`. Original layout comparison screenshots are kept under `source-original/reference-screenshots/`.
 
 **Visual fidelity:** Styling reflects actual screenshots of the original public site, including the purple headings, white header, navigation order, member portrait-and-text positioning, centered welcome paragraph, semester text listings and gallery photo captions. External embeds may not reproduce the original Google Sites runtime exactly.
 
