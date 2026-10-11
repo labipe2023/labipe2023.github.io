@@ -56,11 +56,47 @@ function yearOf(item) {
   const match = String(item.year || "").match(/(?:19|20)\d{2}/);
   return match ? match[0] : "Other";
 }
+
+// Boeun Kim joined Kongju National University as Assistant Professor in Sep 2023.
+// Group earlier publications in one archival block, retaining the original reference numbers and years.
+// For J22 (2023) the earliest online record is Aug 2023, although the journal issue is Oct 2023.
+const PRE_APPOINTMENT = "pre-appointment";
+const PRE_APPOINTMENT_LABEL = "~2023.09 (Prior to Faculty Appointment)";
+function publicationGroup(pub) {
+  const year = Number(yearOf(pub));
+  if (year && year < 2023) return PRE_APPOINTMENT;
+  if (year === 2023 && /^2023-0[1-8]$/.test(pub.firstOnlineMonth || "")) return PRE_APPOINTMENT;
+  return Number.isFinite(year) ? String(year) : "Other";
+}
 function groupedYears(records) {
-  return [...new Set(records.map(yearOf))].sort((a, b) => a === "Other" ? 1 : b === "Other" ? -1 : Number(b) - Number(a));
+  return [...new Set(records.map(publicationGroup))].sort((a,b) => {
+    if (a === PRE_APPOINTMENT) return 1;
+    if (b === PRE_APPOINTMENT) return -1;
+    if (a === "Other") return 1;
+    if (b === "Other") return -1;
+    return Number(b)-Number(a);
+  });
+}
+function authorKey(author) {
+  return String(author || "").replace(/[†*]/g, "").toLowerCase().replace(/[^a-z가-힣]/g, "");
+}
+const PI_AUTHOR_NAMES = new Set(["B. Kim", "Kim, B.", "Boeun Kim", "Kim, Boeun"].map(authorKey));
+// Lab-member aliases must correspond to confirmed current or former group members;
+// names are not guessed from coauthorship alone.
+const LAB_MEMBER_NAMES = new Set([
+  ...(data.labMemberAuthorAliases || []),
+  ...(data.people || []).filter(p => !/principal investigator/i.test(p.role || "")).flatMap(p => [p.name, ...(p.authorAliases || [])])
+].map(authorKey));
+function styledAuthors(pub) {
+  return String(pub.authors || "").split(/\s*;\s*/).map(part => {
+    const name = part.trim();
+    const key = authorKey(name);
+    const role = PI_AUTHOR_NAMES.has(key) ? "author-pi" : LAB_MEMBER_NAMES.has(key) ? "author-lab" : "";
+    return role ? '<strong class="' + role + '">' + esc(name) + '</strong>' : esc(name);
+  }).join(", ");
 }
 function bibliographyItem(pub, type="journal") {
-  const authors = esc(pub.authors || "").replace(/;\s*/g, ", ");
+  const authors = styledAuthors(pub);
   const code = esc(pub.code || "");
   const doi = type === "journal" && pub.doi
     ? ' <a class="ref-doi" href="' + safeUrl(pub.url) + '" target="_blank" rel="noopener noreferrer">doi.org/' + esc(pub.doi) + ' ↗</a>'
@@ -75,11 +111,13 @@ function bibliographyItem(pub, type="journal") {
     '</li>';
 }
 function yearlyReferences(records, type) {
-  return groupedYears(records).map(year => {
-    const id = type + '-' + year;
-    const pubList = records.filter(x => yearOf(x) === year);
-    return '<div class="year-group"><h3 class="pub-year" id="' + id + '">' + esc(year) + '</h3>' +
-      '<ol class="reference-list" aria-label="' + esc(year) + ' ' + (type === "journal" ? "journal articles" : "conference proceedings") + '">' +
+  return groupedYears(records).map(group => {
+    const id = type + '-' + group;
+    const label = group === PRE_APPOINTMENT ? PRE_APPOINTMENT_LABEL : group;
+    const pubList = records.filter(x => publicationGroup(x) === group);
+    return '<div class="year-group"><h3 class="pub-year' + (group === PRE_APPOINTMENT ? ' archive-period' : '') +
+      '" id="' + id + '">' + esc(label) + '</h3>' +
+      '<ol class="reference-list" aria-label="' + esc(label) + ' ' + (type === "journal" ? "journal articles" : "conference proceedings") + '">' +
       pubList.map(x => bibliographyItem(x, type)).join("") + '</ol></div>';
   }).join("");
 }
