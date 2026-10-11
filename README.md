@@ -1,70 +1,72 @@
-# BK Research Group, LIPE — website migration
+# BK Research Group, LIPE — GitHub Pages Migration
 
-A dependency-free static website hosted in the `labipe2023/labipe2023.github.io` GitHub repository.
+**Source website:** https://sites.google.com/view/bkimgroup/home  
+**Migrated site:** https://labipe2023.github.io/  
+**Repository:** https://github.com/labipe2023/labipe2023.github.io
 
-- **Original website:** https://sites.google.com/view/bkimgroup/home
-- **Original Publications page:** https://sites.google.com/view/bkimgroup/publications
-- **Original Research page:** https://sites.google.com/view/bkimgroup/research
-- **GitHub Pages URL** (after Pages is enabled): https://labipe2023.github.io/
+This repository contains a dependency-free, responsive HTML/CSS/JavaScript migration of the **Laboratory for Intelligent Process Engineering (LIPE)** at Kongju National University. Page content and original photos were collected directly from the publicly available Google Sites pages on **11 October 2026** using a one-time GitHub Actions browser download.
 
-## Design
+## Page migration inventory
 
-The site uses the original Google Sites information architecture and a restrained, Google Sites-like visual style: white sticky navigation, neutral content areas, simple text typography and original academic bibliography notation. This replaces the initial dark-gradient / tiled-card design.
+| Page | What was migrated from Google Sites |
+| --- | --- |
+| Home | Official research-laboratory title, bilingual welcome, research goal, email and university address |
+| People → Professor | Prof. Boeun Kim's biography, contact details, education, professional experience, original portrait |
+| People → Current Members | 5 members with the five original photographs, plus 3 verified alumni and research topics |
+| Research | Five listed research areas and applications, including their nested structure |
+| Publications | 25 journal papers with DOI links and 10 conference proceedings; original J/C numbering retained |
+| Courses | Semester-by-semester courses from 2023 to 2026 |
+| News | Seven announcements from 2023 to 2026 |
+| Gallery | Events organized by 2026 / 2025 / 2024, with **10 original photographs** from the public gallery and verified captions |
 
-Navigation matches the original:
-Home · People (Professor / Current Members) · Research · Publications · Courses · News · Gallery.
+**Image sources:** `source-original/images/` contains the publicly published originals (professor photo, member portraits, gallery/event images, and two publication-related images). The website loads them from the repository instead of depending on long-lived Google Sites media URLs. The page-text extraction with URLs and image provenance is in `source-original/manifest.json` and `source-original/rendered-gallery.json`. Original layout comparison screenshots are kept under `source-original/reference-screenshots/`.
 
-The user-supplied `kayhryu89.github.io-main.zip` served as the reference for **year headers, hanging bibliography layout and table of contents**. No people, photos or publications from the other laboratory were imported.
-
-The original **Home page visual imagery could not be verified** in the available retrieval environment. The neutral home cover is therefore a deliberate approximation, not a pixel-accurate copy of any unverified home banner image.
-
-## Publication formatting update (October 2026)
-
-- Professor **Boeun Kim** (abbreviated B. Kim or Kim, B.) is **bold black** in citations.
-- Confirmed laboratory member coauthors are **bold blue**. The app matches whole author tokens, not just surnames. Add verified citation-format author aliases to `data.labMemberAuthorAliases` in `assets/content.js`, or add members with an `authorAliases` array to `data.people`. At present the original Current Members page is inaccessible to the retrieval service, so other people are not incorrectly labeled as group members.
-- Publication headings use 2025 / 2024 / 2023, and **~2023.09 (Prior to Faculty Appointment)** for earlier work. Prof. Kim started the faculty appointment in Sep. 2023.
-- J22 is in the earlier group on the basis of an August 2023 article index date; the original journal issue is dated Oct. 2023. J20 and J21 remain in the 2023 group.
-- Both Journal Articles and Conference Proceedings retain their original reference numbers, DOI information and chronological ordering. The left TOC keeps only the two category links.
+**Visual fidelity:** Styling reflects actual screenshots of the original public site, including the purple headings, white header, navigation order, member portrait-and-text positioning, centered welcome paragraph, semester text listings and gallery photo captions. External embeds may not reproduce the original Google Sites runtime exactly.
 
 ## Publications
 
-The original public bibliography includes:
-- **25 Refereed Journal Articles** (J25 through J1), grouped by publication year with direct DOI links and source numbering
-- **10 Refereed Conference Proceedings** (C10 through C1), grouped by year
-- Original corresponding-author (`*`) and co-first-author (`†`) notation
-- Original front-cover article notes (where listed)
-- Sticky **left "On this page" table of contents** with links to both categories and every publication year (on mobile, a compact table of contents appears above the bibliography)
+- Refereed Journal Articles **J25–J1** and Refereed Conference Proceedings **C10–C1**
+- Direct DOI links for all 25 journal papers
+- Annual headings for 2023 onward and one grouped archive labeled **`~2023.09 (Prior to Faculty Appointment)`** for papers from before the September 2023 faculty appointment
+- Original author-marker notation: `*` corresponding author and `†` equal/co-first author
+- **Boeun Kim:** bold black; **verified lab-member coauthors:** bold blue; others: regular. The member roster and original English-name spellings are defined in `assets/content.js`; add abbreviated citation names to `labMemberAuthorAliases` only when they can be verified.
+- Left-hand navigation contains just **Journal Articles** and **Conference Proceedings**, with no TOC heading or year links.
+- Original J20 Google Sites title did not match its DOI record; the DOI-matched publisher title is used on the migrated page, with a note.
 
-**J20 metadata note:** The original website repeats the title of J18, even though it points to an Automatica DOI. This migration uses the publisher-confirmed title *Embedding active learning in batch-to-batch optimization using reinforcement learning* for DOI `10.1016/j.automatica.2023.111260`, and explains that adjustment on the page.
-
-## Source files
+## Project files
 
 ```
-index.html
+index.html                  Main page structure and navigation
 assets/
-  content.js    # Verified lab profile, research topics, 25 journal + 10 conference records
-  styles.css    # Google Sites-inspired responsive CSS
-  app.js        # Navigation, year groups, sticky TOC, page rendering
-README.md
+  app.js                    Page renderers, research list, bibliography, gallery
+  content.js                Research, member, course, news, gallery and paper data
+  styles.css                Original-inspired responsive styles
+source-original/
+  images/                   Downloaded original site photos
+  manifest.json             Original Google Sites page content and source metadata
+  rendered-gallery.json     Lazy-loaded gallery photo captions and source URLs
+  reference-screenshots/    Screenshots of the original public pages for design review
+scripts/
+  import_google_sites.py    One-time original-site content and image import
+  capture_google_sites.py   Original-site visual reference capture
+  collect_gallery_media.py  Additional lazy-loaded gallery images
+  verify_deployed_site.py   Live GitHub Pages browser QA
 ```
 
-**To edit content**, update the `data` object inside `assets/content.js`. The `publications` array has DOI and bibliographic metadata, `conferences` has proceedings. Do not change original identifiers when adding or updating a record. Sections that still lack verified sources show a neutral notice rather than invented information.
+The uploaded `kayhryu89.github.io-main.zip` was **only a reference for bibliography year-group and navigation concepts**; its photographs, staff, and publication records were not copied into the BK Research Group website.
 
-## Local testing
+## Local preview
 
-No Node/Quarto/Python dependencies are required for deployment. If Python is installed, run:
+No site build step is required. On Windows with Python:
 
 ```powershell
 python -m http.server 8000
 ```
 
-Open `http://localhost:8000/` and `http://localhost:8000/?page=publications`. Test year links (e.g. `#journal-2025` and `#conference-2022`), DOI links and the mobile navigation menu.
+Open `http://localhost:8000/` and `http://localhost:8000/?page=publications`.
 
-## GitHub Pages activation
+## Deployment
 
-In repository **Settings → Pages → Build and deployment**:
-1. Select **Deploy from a branch**.
-2. Select **main** and **/(root)**.
-3. Save and verify the first successful deployment.
+GitHub Pages publishes the root of the `main` branch through the repository's Pages configuration. A browser-based check runs through `scripts/verify_deployed_site.py`, recording deployment, image-loading and script-error results under `site-check/` when the QA workflow is triggered.
 
-The repository files have been updated, but the public Pages deployment is not asserted as verified.
+For subsequent content changes, edit `assets/content.js`, commit to `main`, and allow GitHub Pages to redeploy.
