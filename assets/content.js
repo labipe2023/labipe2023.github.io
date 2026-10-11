@@ -1,6 +1,5 @@
-/* BK Research Group, LIPE — verified source migration data.
- * Source: https://sites.google.com/view/bkimgroup/home and source-original/manifest.json.
- * Gallery titles are paired with images from their original page order and rendered captions.
+/* Original BK Research Group source-data records, 2026-10-12.
+ * Original media at source-original/images; gallery event captions visually cross-checked.
  */
 const data = {
   "lab": "BK Research Group, LIPE",
@@ -661,40 +660,32 @@ const data = {
       "events": [
         {
           "title": "한국화학공학회 2025 가을",
+          "photos": []
+        },
+        {
+          "title": "학부 졸업논문 발표",
           "photos": [
             "source-original/images/gallery-01.jpg"
           ]
         },
         {
-          "title": "학부 졸업논문 발표",
-          "photos": [
-            "source-original/images/gallery-02.jpg",
-            "source-original/images/gallery-extra-01.jpg"
-          ]
-        },
-        {
           "title": "여름 회식",
-          "photos": [
-            "source-original/images/gallery-03.jpg"
-          ]
+          "photos": []
         },
         {
           "title": "여수",
-          "photos": [
-            "source-original/images/gallery-04.jpg"
-          ]
+          "photos": []
         },
         {
           "title": "제 1회 공정한 만남 워크샵",
           "photos": [
-            "source-original/images/gallery-05.jpg",
-            "source-original/images/gallery-extra-02.jpg"
+            "source-original/images/gallery-02.jpg"
           ]
         },
         {
           "title": "제 2회 공정한 만남 워크샵",
           "photos": [
-            "source-original/images/gallery-extra-03.jpg"
+            "source-original/images/gallery-03.jpg"
           ]
         }
       ]
@@ -705,13 +696,13 @@ const data = {
         {
           "title": "스승의 날",
           "photos": [
-            "source-original/images/gallery-extra-04.jpg"
+            "source-original/images/gallery-04.jpg"
           ]
         },
         {
           "title": "한국화학공학회 2024 가을",
           "photos": [
-            "source-original/images/gallery-extra-05.jpg"
+            "source-original/images/gallery-05.jpg"
           ]
         }
       ]
@@ -720,14 +711,9 @@ const data = {
   "galleryImages": [
     "source-original/images/gallery-01.jpg",
     "source-original/images/gallery-02.jpg",
-    "source-original/images/gallery-extra-01.jpg",
     "source-original/images/gallery-03.jpg",
     "source-original/images/gallery-04.jpg",
-    "source-original/images/gallery-05.jpg",
-    "source-original/images/gallery-extra-02.jpg",
-    "source-original/images/gallery-extra-03.jpg",
-    "source-original/images/gallery-extra-04.jpg",
-    "source-original/images/gallery-extra-05.jpg"
+    "source-original/images/gallery-05.jpg"
   ],
   "publicationImages": [
     "source-original/images/publications-01.jpg",
