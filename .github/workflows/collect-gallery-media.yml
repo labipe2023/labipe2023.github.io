@@ -1,0 +1,30 @@
+name: Collect lazy loaded public LIPE gallery photos
+on:
+  push:
+    paths:
+      - ".github/workflows/collect-gallery-media.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install browser and downloader
+        run: |
+          python -m pip install --quiet requests playwright
+          python -m playwright install --with-deps chromium
+      - name: Scroll through original gallery and recover original photos
+        run: python scripts/collect_gallery_media.py
+      - name: Commit copied photos
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add source-original
+          if ! git diff --cached --quiet; then
+            git commit -m "Copy additional original LIPE gallery photos"
+            git pull --rebase origin main
+            git push origin main
+          fi
