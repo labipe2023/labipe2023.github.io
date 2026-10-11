@@ -130,3 +130,70 @@ svg,img{max-width:100%}
  .footer .footer-right{margin-top:19px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Source-matched content styles for Google Sites pages, October 2026. */
+.home-cover{background:#f4f5f6}
+.home-cover-inner{padding-top:66px;padding-bottom:66px}
+.home-cover h1{max-width:980px;font-size:clamp(32px,4.4vw,51px);line-height:1.22;font-weight:500;color:#24272b;margin:0 0 12px;letter-spacing:-1.2px}
+.home-cover .home-subtitle{font-size:18px;color:#535f6a}
+.home-main{max-width:1010px}
+.home-welcome h2{font-size:clamp(23px,3vw,31px);font-weight:500;line-height:1.45;border:0;padding:0;margin:0 0 24px}
+.home-contact{border-top:1px solid var(--line);padding-top:23px;color:#57616c;font-size:14px;margin-top:50px}
+.home-contact p{margin:9px 0}
+.professor-profile{display:grid;grid-template-columns:minmax(180px,250px) minmax(0,1fr);gap:38px;align-items:start;margin:0 0 55px}
+.professor-photo{width:100%;height:auto;max-height:375px;object-fit:contain;object-position:top left;border:1px solid #eee;background:#fff}
+.professor-details h2{font-size:29px;font-weight:500;margin:0 0 18px}
+.professor-details p{line-height:1.95;font-size:15px;color:#434b53}
+.members-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:37px 28px}
+.member-card{min-width:0}
+.member-card .member-photo{display:block;width:100%;height:240px;object-fit:contain;object-position:center top;border:1px solid #e6e8eb;background:#f6f7f8}
+.member-info{padding-top:15px}
+.member-info h3{font-size:20px;font-weight:600;margin:0 0 2px;line-height:1.4}
+.member-en{color:#434f5a;font-size:14px;margin:0 0 9px}
+.member-info p:not(.member-en){font-size:14px;margin:0}
+.alumni-list{list-style:none;padding:0;margin:3px 0 28px}
+.alumni-item{padding:15px 0;border-bottom:1px solid #e4e6e8;font-size:15px;line-height:1.7}
+.alumni-work{margin:3px 0;color:#41484e;font-size:14px}
+.alumni-item>.text-muted{font-size:13px}
+.course-year,.news-year,.gallery-year{margin:0 0 45px}
+.course-year>h2,.news-year>h2,.gallery-year>h2,.gallery-photos>h2{font-size:24px;line-height:1.35;color:#2b3740;font-weight:500;border-bottom:1px solid #c4cbd1;padding-bottom:11px;margin:0 0 16px}
+.course-term{display:grid;grid-template-columns:100px minmax(0,1fr);gap:26px;padding:11px 0;border-bottom:1px solid #eceeef;font-size:16px}
+.course-term strong{font-weight:600}
+.course-list{color:#343d45}
+.news-year{margin-bottom:43px}
+.news-item{display:grid;grid-template-columns:73px minmax(0,1fr);gap:15px;align-items:start;padding:10px 0;border-bottom:1px solid #eef0f2;font-size:15px}
+.news-date{color:#4d5964;white-space:nowrap;font-weight:600}
+.news-text{color:#30373d;line-height:1.75}
+.gallery-year{margin-bottom:34px}
+.gallery-events{list-style:none;margin:0;padding:0}
+.gallery-events li{padding:9px 0;border-bottom:1px solid #e8ebed;font-size:16px}
+.gallery-photos{margin-top:40px}
+.gallery-photos>.text-muted{font-size:13px;max-width:720px;margin:0 0 22px}
+.gallery-photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.gallery-photo-grid>a{display:block;background:#f5f7f8;border:1px solid #e6e9ed;overflow:hidden;min-height:190px}
+.gallery-photo{display:block;width:100%;height:285px;object-fit:contain;object-position:center;transition:transform .18s ease}
+.gallery-photo-grid>a:hover .gallery-photo{transform:scale(1.02)}
+@media(max-width:860px){
+  .members-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 22px}
+  .member-card .member-photo{height:250px}
+}
+@media(max-width:760px){
+  .home-cover-inner{padding-top:48px;padding-bottom:50px}
+  .home-cover h1{font-size:34px}
+  .home-welcome h2{font-size:22px}
+  .professor-profile{grid-template-columns:1fr;gap:18px;margin-bottom:36px}
+  .professor-photo{width:min(72%,275px);max-height:350px}
+  .professor-details h2{font-size:25px}
+  .members-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:25px 14px}
+  .member-card .member-photo{height:200px}
+  .member-info h3{font-size:18px}
+  .course-term{grid-template-columns:70px minmax(0,1fr);gap:12px;font-size:14px}
+  .news-item{grid-template-columns:68px minmax(0,1fr);gap:7px;font-size:14px}
+  .gallery-photo-grid{grid-template-columns:1fr}
+  .gallery-photo{height:260px}
+}
+@media(max-width:420px){
+  .member-card .member-photo{height:175px}
+  .member-info h3{font-size:16px}
+  .member-en,.member-info p:not(.member-en){font-size:12px}
+}
