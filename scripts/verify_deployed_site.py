@@ -41,6 +41,18 @@ with sync_playwright() as p:
       images:[...document.querySelectorAll('main img')].map(i=>({src:i.getAttribute('src'),loaded:i.complete&&i.naturalWidth>0})),
       headerTitleColor:document.querySelector('h1')?getComputedStyle(document.querySelector('h1')).color:'',
     })""")
+   if name=="gallery":
+    first=page.locator(".gallery-figure").first
+    dots=first.locator(".gallery-dot")
+    summary["carouselCount"]=page.locator(".gallery-dot").count()
+    summary["originalGalleryImages"]=page.evaluate("data.galleryImages")
+    if dots.count()>1:
+     before=first.locator("img").get_attribute("src")
+     dots.nth(1).click()
+     after=first.locator("img").get_attribute("src")
+     summary["carouselWorks"]=before!=after and dots.nth(1).get_attribute("aria-pressed")=="true"
+     dots.nth(0).click()
+    else:summary["carouselWorks"]=False
    summary.update({"url":page.url,"http":status,"jsErrors":errors})
    result["pages"][name]=summary
    if name in ["home","members","gallery","courses"]:
