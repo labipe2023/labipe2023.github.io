@@ -319,3 +319,11 @@ svg,img{max-width:100%}
 @media(max-width:1100px){
  .home-cover h1{white-space:normal;font-size:clamp(30px,4.45vw,49px)}
 }
+
+/* Original Google Sites-style photograph pager indicators. */
+.gallery-dots{display:flex;gap:8px;align-items:center;justify-content:center;min-height:24px;margin:2px 0 0}
+.gallery-dot{appearance:none;background:#d4d5d7;border:0;border-radius:50%;width:10px;height:10px;min-width:10px;padding:0;cursor:pointer}
+.gallery-dot:hover{background:#9374b6}
+.gallery-dot.is-current{background:var(--original-purple)}
+.gallery-dot:focus-visible{outline:2px solid var(--original-purple);outline-offset:3px}
+.gallery-figure .gallery-active-link{display:block;max-width:100%}
