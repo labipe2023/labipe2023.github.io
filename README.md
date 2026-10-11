@@ -18,6 +18,14 @@ The user-supplied `kayhryu89.github.io-main.zip` served as the reference for **y
 
 The original **Home page visual imagery could not be verified** in the available retrieval environment. The neutral home cover is therefore a deliberate approximation, not a pixel-accurate copy of any unverified home banner image.
 
+## Publication formatting update (October 2026)
+
+- Professor **Boeun Kim** (abbreviated B. Kim or Kim, B.) is **bold black** in citations.
+- Confirmed laboratory member coauthors are **bold blue**. The app matches whole author tokens, not just surnames. Add verified citation-format author aliases to `data.labMemberAuthorAliases` in `assets/content.js`, or add members with an `authorAliases` array to `data.people`. At present the original Current Members page is inaccessible to the retrieval service, so other people are not incorrectly labeled as group members.
+- Publication headings use 2025 / 2024 / 2023, and **~2023.09 (Prior to Faculty Appointment)** for earlier work. Prof. Kim started the faculty appointment in Sep. 2023.
+- J22 is in the earlier group on the basis of an August 2023 article index date; the original journal issue is dated Oct. 2023. J20 and J21 remain in the 2023 group.
+- Both Journal Articles and Conference Proceedings retain their original reference numbers, DOI information and chronological ordering. The left TOC keeps only the two category links.
+
 ## Publications
 
 The original public bibliography includes:
