@@ -239,6 +239,7 @@ function news() {
 }
 function galleryCard(evt) {
   const files=evt.photos || [];
+  if(!files.length) return '<div class="gallery-event-no-photo">' + esc(evt.title) + '</div>';
   const img=files[0]||"";
   return '<figure class="gallery-figure"><a href="' + esc(img) +
     '" target="_blank" rel="noopener noreferrer" aria-label="View full-size photo: ' + esc(evt.title) + '">' +
