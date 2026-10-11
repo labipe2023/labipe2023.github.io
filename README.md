@@ -1,55 +1,52 @@
-# BKIM Group — Research Website
+# BKIM Group website (GitHub Pages)
 
-GitHub Pages-ready website for **BKIM Group**, based on the navigation and visual organization of the uploaded LASER/Quarto example.
+A responsive, zero-dependency **migration preview** of the BKIM Group laboratory website.
 
-## Source and migration status
+- Original Google Sites: https://sites.google.com/view/bkimgroup/home
+- Target repository: https://github.com/labipe2023/labipe2023.github.io
+- Expected Pages URL after deployment: https://labipe2023.github.io/
 
-Original Google Sites: https://sites.google.com/view/bkimgroup/home
+## Important migration limitation
 
-**Draft migration:** Google Sites content could not be retrieved programmatically when this project was created. The professor's name, affiliation, research descriptions, publications, photographs and contact details are **not invented**; the site displays clearly marked migration placeholders until verified information is entered.
+The original Google Sites page could not be read in the available browser/search environment, so the **original site's contents have not been copied**. This preview provides a complete navigation system and editable templates for the seven pages: Home, About, Research, Projects, Publications, People, News. Empty profile and academic records intentionally appear as "awaiting verification", not as invented data.
 
-## Pages
-
-Home · About · Research · Projects · Publications · People · News
-
-Pages work at `index.html?page=research` etc. This project is a dependency-free static website, so no Quarto/Python build step is required for publication.
-
-## Editing content
-
-Open `assets/content.js` and replace the marked fields/arrays with the verified content from Google Sites.
-- `profile`: lab name, PI, university, department, intro, mission, email, address.
-- `research`: verified research topics and descriptions.
-- `projects`: projects with title, status, description, and URL.
-- `publications`: papers with title, authors, journal, year, URL.
-- `people`: principal investigator and member roster.
-- `news`: announcements with real dates.
-
-Do not copy another laboratory's profile, photos or publication data from the reference archive; that archive is for layout inspiration.
-
-## Publish on GitHub Pages
-
-1. Open repository **Settings → Pages**.
-2. Under **Build and deployment**, select **Deploy from a branch**.
-3. Choose branch **main**, folder **/(root)**, and **Save**.
-4. Visit https://labipe2023.github.io/ after GitHub shows the deployment as successful.
-
-No deployment is asserted until GitHub Pages is enabled and verified.
-
-## Local preview
-
-Open `index.html` directly, or serve it with:
-
-```bash
-python -m http.server 8000
-```
-
-Then visit http://localhost:8000/
+The uploaded `kayhryu89.github.io-main.zip` (LASER research lab) was used **only as a reference for general layout and information architecture**. Its members, photos, addresses, publications, and project data do not belong to BKIM Group and have not been copied.
 
 ## Files
 
-- `index.html`: app shell and metadata
-- `assets/styles.css`: responsive design
-- `assets/app.js`: navigation, page rendering and functionality
-- `assets/content.js`: editable content only
-- `.nojekyll`: GitHub Pages compatibility
+- `index.html`: all HTML, CSS, client-side routing, and editable site data
+- `README.md`: setup and migration status
 
+## Edit site contents
+
+Open `index.html` and locate:
+
+```javascript
+const data={
+ lab:"BKIM Group",
+ description:"...",
+ mission:"...",
+ professor:"",university:"",department:"",email:"",address:"",
+ research:[],projects:[],publications:[],people:[],news:[]
+};
+```
+
+Fill in verified data obtained from the original Google Sites page. Example item structures are noted immediately underneath the data object. For research, use `{title,description,keywords}`; projects `{title,period,status,description,url}`; publications `{title,authors,journal,year,url}`; people `{name,role,description,image}`; and news `{date,title,body}`. Do not use unverified content.
+
+## GitHub Pages deployment
+
+1. Open the repository's **Settings → Pages**.
+2. **Build and deployment → Source:** Deploy from a branch.
+3. **Branch:** main, **Folder:** /(root).
+4. Click **Save**; wait for GitHub to display a successful Pages deployment.
+5. Open https://labipe2023.github.io/
+
+The GitHub connector can create and update repository files, but this workflow did **not** enable GitHub Pages in repository settings, and the live URL has not yet been confirmed. 
+
+## Preview locally
+
+```powershell
+python -m http.server 8000
+```
+
+Browse to http://localhost:8000/. No Quarto, Node.js, or Python dependencies are required to build the site.
