@@ -1,5 +1,5 @@
-/* Original BK Research Group source-data records, 2026-10-12.
- * Original media at source-original/images; gallery event captions visually cross-checked.
+/* Original BK Research Group source content and manually verified original event images.
+ * See source-original/gallery-browser-audit.json for original photo URLs and evidence.
  */
 const data = {
   "lab": "BK Research Group, LIPE",
@@ -660,7 +660,11 @@ const data = {
       "events": [
         {
           "title": "한국화학공학회 2025 가을",
-          "photos": []
+          "photos": [
+            "source-original/images/gallery-discovered-01.jpg",
+            "source-original/images/gallery-discovered-06.jpg",
+            "source-original/images/gallery-discovered-08.jpg"
+          ]
         },
         {
           "title": "학부 졸업논문 발표",
@@ -670,11 +674,17 @@ const data = {
         },
         {
           "title": "여름 회식",
-          "photos": []
+          "photos": [
+            "source-original/images/gallery-discovered-02.jpg",
+            "source-original/images/gallery-discovered-07.jpg"
+          ]
         },
         {
           "title": "여수",
-          "photos": []
+          "photos": [
+            "source-original/images/gallery-discovered-03.jpg",
+            "source-original/images/gallery-discovered-09.jpg"
+          ]
         },
         {
           "title": "제 1회 공정한 만남 워크샵",
@@ -709,7 +719,14 @@ const data = {
     }
   ],
   "galleryImages": [
+    "source-original/images/gallery-discovered-01.jpg",
+    "source-original/images/gallery-discovered-06.jpg",
+    "source-original/images/gallery-discovered-08.jpg",
     "source-original/images/gallery-01.jpg",
+    "source-original/images/gallery-discovered-02.jpg",
+    "source-original/images/gallery-discovered-07.jpg",
+    "source-original/images/gallery-discovered-03.jpg",
+    "source-original/images/gallery-discovered-09.jpg",
     "source-original/images/gallery-02.jpg",
     "source-original/images/gallery-03.jpg",
     "source-original/images/gallery-04.jpg",
