@@ -72,6 +72,7 @@ svg,img{max-width:100%}
 .toc-title{font-size:14px;font-weight:600;color:#343c44;margin:3px 0 12px;padding-left:11px}
 .toc a{display:block;line-height:1.45;border-left:2px solid transparent;color:#68717a;text-decoration:none;padding:6px 10px}
 .toc a:hover,.toc a:focus-visible,.toc a.is-active{color:#165f9b;background:#f0f5fa;border-left-color:#3679a5}
+.toc-list-heading{font-size:11px;color:#7c858e;letter-spacing:.2px;margin:13px 0 5px;padding:0 11px;font-weight:600}
 .toc a.toc-category{font-size:13px;font-weight:600;color:#41494f;margin-top:12px;padding-left:11px}
 .toc a.toc-year{font-size:12px;padding:3px 12px 3px 22px}
 .toc small{font-size:11px;color:#8c969e}
