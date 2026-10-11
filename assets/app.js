@@ -240,15 +240,30 @@ function news() {
 function galleryCard(evt) {
   const files=evt.photos || [];
   if(!files.length) return '<div class="gallery-event-no-photo">' + esc(evt.title) + '</div>';
-  const img=files[0]||"";
-  return '<figure class="gallery-figure"><a href="' + esc(img) +
+  const img=files[0];
+  return '<figure class="gallery-figure" data-gallery-files="' + esc(JSON.stringify(files)) + '">' +
+    '<a class="gallery-active-link" href="' + esc(img) +
     '" target="_blank" rel="noopener noreferrer" aria-label="View full-size photo: ' + esc(evt.title) + '">' +
-    photo(img,evt.title,"gallery-photo")+'</a><figcaption>'+esc(evt.title)+'</figcaption>' +
-    (files.length>1?'<div class="gallery-secondary-photos" aria-label="More photographs of ' +
-      esc(evt.title) + '">' + files.slice(1).map((x,i)=>
-        '<a href="'+esc(x)+'" target="_blank" rel="noopener noreferrer" aria-label="Additional photo '+(i+2)+': '+esc(evt.title)+'">'+
-          photo(x,evt.title+" — additional photograph","gallery-secondary-photo")+'</a>').join("")+
-    '</div>':"")+'</figure>';
+    photo(img,evt.title,"gallery-photo")+'</a>' +
+    '<figcaption>'+esc(evt.title)+'</figcaption>' +
+    (files.length>1 ? '<div class="gallery-dots" aria-label="Select image for ' + esc(evt.title) + '">' +
+      files.map((_,i)=>'<button type="button" class="gallery-dot' + (i===0?' is-current':'') +
+        '" data-index="'+i+'" aria-label="Photo '+(i+1)+' of '+files.length+'" aria-pressed="'+(i===0?'true':'false')+'"></button>').join("")+'</div>' : "") +
+    '</figure>';
+}
+function initGallerySliders() {
+  if(!document.querySelectorAll) return;
+  document.querySelectorAll(".gallery-figure[data-gallery-files]").forEach(fig=>{
+    const files=JSON.parse(fig.dataset.galleryFiles || "[]");
+    const buttons=fig.querySelectorAll(".gallery-dot");
+    buttons.forEach(btn=>btn.addEventListener("click",()=>{
+      const i=Number(btn.dataset.index);
+      if(!Number.isInteger(i)||!files[i]) return;
+      fig.querySelector(".gallery-active-link").href=files[i];
+      fig.querySelector(".gallery-photo").src=files[i];
+      buttons.forEach((b,k)=>{b.classList.toggle("is-current",k===i);b.setAttribute("aria-pressed",String(k===i))});
+    }));
+  });
 }
 function gallery() {
   return '<div class="container main-content gallery-page">' +
@@ -278,6 +293,7 @@ function render() {
     unverified(title);
   document.querySelector("#year").textContent = new Date().getFullYear();
   updateToc();
+  if(page==="gallery") initGallerySliders();
   if (location.hash) {
     const anchor = document.getElementById(decodeURIComponent(location.hash.slice(1)));
     if (anchor) requestAnimationFrame(() => anchor.scrollIntoView());
