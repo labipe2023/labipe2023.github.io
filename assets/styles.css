@@ -1,0 +1,130 @@
+/* BK Research Group, LIPE · Google Sites-inspired academic layout */
+:root{
+  color-scheme:light;
+  --text:#292d32;--muted:#5e6670;--line:#dadfe4;--light:#f5f6f7;
+  --link:#1a63a1;--link-hover:#0c477a;--year:#274c6c;--max:1180px;
+  --header:69px;--body:Arial,Helvetica,"Noto Sans KR",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header) + 24px)}
+body{margin:0;background:#fff;color:var(--text);font-family:var(--body);font-size:15px;line-height:1.76;-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline;color:var(--link-hover)}
+button,summary{font:inherit}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #69a8d5;outline-offset:3px}
+button{cursor:pointer}
+svg,img{max-width:100%}
+.container{width:min(calc(100% - 64px),var(--max));margin-inline:auto}
+.skip-link{position:absolute;z-index:200;top:-80px;left:12px;background:#fff;color:#111;padding:9px 16px;box-shadow:0 2px 10px #0002}
+.skip-link:focus{top:8px}
+.site-header{height:var(--header);position:sticky;z-index:110;top:0;background:#fff;border-bottom:1px solid #e5e5e5}
+.site-header .header-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.site-name{font-size:19px;font-weight:600;color:#25292f;letter-spacing:-.25px;white-space:nowrap;line-height:1.3}
+.site-name:hover{text-decoration:none;color:#25292f}
+.site-nav{align-self:stretch;display:flex;align-items:stretch;gap:3px}
+.nav-link,.nav-dropdown summary{position:relative;display:flex;align-items:center;justify-content:center;padding:0 15px;color:#3f4349;font-size:14px;font-weight:400;text-decoration:none;white-space:nowrap}
+.nav-link:hover,.nav-dropdown summary:hover{color:#111;text-decoration:none;background:#f6f7f7}
+.nav-link[aria-current="page"]::after,.nav-dropdown.active>summary::after{content:"";position:absolute;bottom:0;left:13px;right:13px;height:3px;background:#444e56}
+.nav-dropdown{height:100%;position:relative}
+.nav-dropdown summary{height:100%;list-style:none;cursor:pointer;gap:8px}
+.nav-dropdown summary::-webkit-details-marker{display:none}
+.chevron{font-size:13px;color:#626971;transform:translateY(-1px)}
+.nav-submenu{position:absolute;top:calc(100% - 1px);left:0;min-width:208px;padding:9px 0;background:#fff;border:1px solid #e1e5ea;box-shadow:0 10px 24px #151f2718;z-index:120}
+.nav-submenu a{display:block;padding:9px 18px;font-size:14px;color:#40454a}
+.nav-submenu a:hover,.nav-submenu a[aria-current="page"]{color:#175c95;background:#f3f7fa;text-decoration:none}
+.mobile-menu{display:none;border:0;background:transparent;font-size:15px;color:#222;padding:8px 2px}
+.mobile-menu .hamburger{display:inline-block;font-size:23px;line-height:1;vertical-align:-2px;margin-right:6px}
+#app{min-height:64vh}
+.home-cover{background:#eef1f4;border-bottom:1px solid #e0e4e7}
+.home-cover-inner{padding-top:76px;padding-bottom:78px}
+.home-cover .institution{font-size:13px;color:#566373;margin:0 0 22px;letter-spacing:1px}
+.home-cover h1{font-size:clamp(38px,5vw,59px);line-height:1.17;font-weight:600;letter-spacing:-1.45px;color:#222b36;margin:0 0 18px}
+.home-cover .home-subtitle{font-size:19px;color:#495765;margin:0;max-width:880px}
+.page-heading{background:#f6f7f8;border-bottom:1px solid #e5e8ea;padding:37px 0 35px}
+.page-heading h1{font-weight:500;font-size:clamp(28px,4vw,39px);margin:0;letter-spacing:-.65px;line-height:1.3}
+.page-heading p{font-size:14px;color:#69717a;margin:6px 0 0}
+.main-content{padding:54px 0 100px}
+.main-content.slim{max-width:970px}
+.content-section{margin:0 0 55px}
+.content-section>h2,.content-section .plain-title{font-weight:500;font-size:27px;line-height:1.35;margin:0 0 24px;padding-bottom:12px;border-bottom:1px solid #bec7ce}
+.content-section>p{margin:12px 0 23px}
+.content-section h3{font-size:20px;line-height:1.4;font-weight:600;margin:24px 0 13px}
+.intro-copy{font-size:16px;line-height:1.85;max-width:920px}
+.content-link{color:var(--link);font-size:14px}
+.plain-list{padding-left:22px;margin:12px 0 23px}
+.plain-list li{padding:5px 0}
+.columns{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.footer{border-top:1px solid #ddd;background:#f6f6f6;color:#62686e;padding:35px 0 38px;font-size:13px}
+.footer-inner{display:flex;align-items:start;justify-content:space-between;gap:30px}
+.footer-name{font-size:15px;font-weight:600;color:#383e43;margin:0 0 7px}
+.footer p{margin:4px 0}
+.footer a{font-size:13px}
+.people-row{display:flex;align-items:flex-start;gap:22px;border-bottom:1px solid #e5e5e5;padding:20px 0 26px}
+.people-row h3{font-size:20px;margin:0}
+.people-row p{margin:6px 0}
+.initial-icon{width:78px;height:82px;flex:0 0 auto;display:grid;place-items:center;font-size:27px;color:#73889b;background:#e6ebf0}
+.text-muted{color:var(--muted)}
+.empty-note{border-left:3px solid #b6c1cb;padding:10px 0 10px 17px;margin:18px 0 24px;color:#5e6870;font-size:14px;background:#fafafa}
+.profile-list{padding-left:20px;margin:0}.profile-list li{margin-bottom:9px}
+.site-info-line{border-top:1px solid #e5e5e5;margin-top:28px;padding-top:18px;font-size:14px;color:#536171}
+.publications-layout{display:grid;grid-template-columns:218px minmax(0,1fr);gap:42px;align-items:start}
+.toc{position:sticky;top:calc(var(--header) + 23px);max-height:calc(100vh - var(--header) - 40px);overflow-y:auto;padding:5px 16px 16px 0;font-size:13px;scrollbar-width:thin}
+.toc-title{font-size:14px;font-weight:600;color:#343c44;margin:3px 0 12px;padding-left:11px}
+.toc a{display:block;line-height:1.45;border-left:2px solid transparent;color:#68717a;text-decoration:none;padding:6px 10px}
+.toc a:hover,.toc a:focus-visible,.toc a.is-active{color:#165f9b;background:#f0f5fa;border-left-color:#3679a5}
+.toc a.toc-category{font-size:13px;font-weight:600;color:#41494f;margin-top:12px;padding-left:11px}
+.toc a.toc-year{font-size:12px;padding:3px 12px 3px 22px}
+.toc small{font-size:11px;color:#8c969e}
+.publications-content{min-width:0}
+.publication-section{margin-bottom:75px;scroll-margin-top:95px}
+.publication-section>h2{font-size:27px;font-weight:500;letter-spacing:-.3px;line-height:1.35;border-bottom:1px solid #b3c0c9;padding-bottom:13px;margin:0 0 15px}
+.bib-note{font-size:13px;color:#606871;margin:10px 0 28px}
+.pub-year{font-size:21px;font-weight:600;color:var(--year);border-bottom:2px solid #5b96c2;margin:40px 0 16px;padding-bottom:7px;line-height:1.3;scroll-margin-top:calc(var(--header) + 20px)}
+.pub-year:first-of-type{margin-top:23px}
+.reference-list{list-style:none;margin:0;padding:0}
+.reference-item{display:grid;grid-template-columns:53px minmax(0,1fr);column-gap:9px;padding:0 0 19px;font-size:14.3px;line-height:1.85}
+.ref-index{font-weight:600;color:#323940;white-space:nowrap}
+.ref-body{min-width:0;overflow-wrap:anywhere}
+.ref-body em{font-style:italic;color:#24292f}
+.ref-title{font-weight:400;color:#1d2226}
+.ref-doi{color:#1365aa;white-space:normal}
+.ref-doi:hover{text-decoration:underline}
+.ref-cover{font-size:12px;font-style:italic;color:#6b7176;white-space:normal;margin-left:7px}
+.research-list{columns:1;margin:0 0 30px;padding-left:24px}
+.research-list li{margin:8px 0}
+.subtle-action{border:0;background:transparent;color:#18659b;padding:7px 0;font-size:13px;text-decoration:underline}
+.back-to-top{text-align:right;margin:34px 0 0}
+.back-to-top a{font-size:12px}
+@media(min-width:1050px){.publication-section{max-width:880px}}
+@media(max-width:1060px){
+ .site-name{font-size:17px}.site-nav{gap:0}.nav-link,.nav-dropdown summary{padding:0 10px}
+ .publications-layout{grid-template-columns:200px minmax(0,1fr);gap:27px}
+}
+@media(max-width:760px){
+ :root{--header:61px}
+ .container{width:min(calc(100% - 38px),var(--max))}
+ .site-name{font-size:16px;overflow:hidden;text-overflow:ellipsis}
+ .mobile-menu{display:block;white-space:nowrap}
+ .site-nav{display:none;position:absolute;top:var(--header);left:0;right:0;background:#fff;border-bottom:1px solid #ddd;max-height:calc(100vh - var(--header));overflow:auto;box-shadow:0 12px 16px #00000013;padding:8px 20px 18px;flex-direction:column;align-items:stretch}
+ .site-nav.open{display:flex}
+ .nav-link,.nav-dropdown summary{font-size:15px;justify-content:flex-start;padding:11px 10px;min-height:44px}
+ .nav-link[aria-current="page"]::after,.nav-dropdown.active>summary::after{left:0;right:auto;bottom:8px;top:8px;width:3px;height:auto}
+ .nav-dropdown{height:auto}.nav-dropdown summary{height:auto}
+ .nav-submenu{position:static;border:none;box-shadow:none;padding:0 0 5px 18px}.nav-submenu a{padding:8px}
+ .home-cover-inner{padding:53px 0 55px}.home-cover h1{font-size:39px;letter-spacing:-.7px}.home-cover .home-subtitle{font-size:16px}
+ .page-heading{padding:28px 0 28px}
+ .main-content{padding:35px 0 65px}.content-section{margin-bottom:42px}
+ .content-section>h2,.content-section .plain-title,.publication-section>h2{font-size:24px}
+ .columns{grid-template-columns:1fr;gap:20px}
+ .publications-layout{grid-template-columns:1fr;gap:24px}
+ .toc{position:static;max-height:none;border:1px solid #e5e8eb;background:#f9fafb;padding:12px 15px;border-radius:0}
+ .toc-title{margin-top:0}.toc-categories{display:grid;grid-template-columns:1fr 1fr;column-gap:8px}
+ .toc-year-lists{display:none}
+ .toc a.toc-category{font-size:12px;margin:0;padding:7px}
+ .publication-section{margin-bottom:55px}
+ .pub-year{margin-top:29px}
+ .reference-item{grid-template-columns:48px minmax(0,1fr);gap:5px;font-size:13.5px;line-height:1.8;padding-bottom:19px}
+ .footer-inner{display:block}
+ .footer .footer-right{margin-top:19px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
