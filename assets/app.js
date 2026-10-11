@@ -183,7 +183,7 @@ function research() {
       '</ul>') + '</div>';
 }
 function professor() {
-  return '<div class="container main-content slim professor-page">' +
+  return '<div class="container main-content professor-page">' +
     '<section class="professor-profile">' +
       photo(data.professorPhoto,"Portrait of Professor Boeun Kim","professor-photo") +
       '<div class="professor-details"><h2>김보은, Boeun Kim</h2>' +
@@ -208,7 +208,7 @@ function alumniRow(alum) {
     '<div class="text-muted">' + esc(alum.period) + '</div></li>';
 }
 function members() {
-  return '<div class="container main-content slim members-page">' +
+  return '<div class="container main-content members-page">' +
     '<section class="content-section"><div class="members-grid">' +
       data.members.map((m,i)=>memberCard(m,i===0)).join("") +
     '</div></section><section class="content-section alumni-section">' +
@@ -250,7 +250,7 @@ function galleryCard(evt) {
     '</div>':"")+'</figure>';
 }
 function gallery() {
-  return '<div class="container main-content slim gallery-page">' +
+  return '<div class="container main-content gallery-page">' +
     data.gallery.map(yr=>'<section class="gallery-year"><h2>'+esc(yr.year)+'</h2>' +
       (yr.events.length ? '<div class="gallery-photo-grid">' + yr.events.map(galleryCard).join("") +
        '</div>' : '') + '</section>').join("")+'</div>';
