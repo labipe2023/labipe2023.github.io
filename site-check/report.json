@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-11T16:10:51.731357+00:00",
+  "checked_at": "2026-10-11T16:20:28.539105+00:00",
   "pages": {
     "home": {
       "documentTitle": "BK Research Group, LIPE",
@@ -151,15 +151,23 @@
       "doi": 0,
       "images": [
         {
+          "src": "source-original/images/gallery-discovered-01.jpg",
+          "loaded": true
+        },
+        {
           "src": "source-original/images/gallery-01.jpg",
           "loaded": true
         },
         {
-          "src": "source-original/images/gallery-02.jpg",
+          "src": "source-original/images/gallery-discovered-02.jpg",
           "loaded": true
         },
         {
-          "src": "source-original/images/gallery-extra-01.jpg",
+          "src": "source-original/images/gallery-discovered-03.jpg",
+          "loaded": true
+        },
+        {
+          "src": "source-original/images/gallery-02.jpg",
           "loaded": true
         },
         {
@@ -173,25 +181,25 @@
         {
           "src": "source-original/images/gallery-05.jpg",
           "loaded": true
-        },
-        {
-          "src": "source-original/images/gallery-extra-02.jpg",
-          "loaded": true
-        },
-        {
-          "src": "source-original/images/gallery-extra-03.jpg",
-          "loaded": true
-        },
-        {
-          "src": "source-original/images/gallery-extra-04.jpg",
-          "loaded": true
-        },
-        {
-          "src": "source-original/images/gallery-extra-05.jpg",
-          "loaded": true
         }
       ],
       "headerTitleColor": "",
+      "carouselCount": 7,
+      "originalGalleryImages": [
+        "source-original/images/gallery-discovered-01.jpg",
+        "source-original/images/gallery-discovered-06.jpg",
+        "source-original/images/gallery-discovered-08.jpg",
+        "source-original/images/gallery-01.jpg",
+        "source-original/images/gallery-discovered-02.jpg",
+        "source-original/images/gallery-discovered-07.jpg",
+        "source-original/images/gallery-discovered-03.jpg",
+        "source-original/images/gallery-discovered-09.jpg",
+        "source-original/images/gallery-02.jpg",
+        "source-original/images/gallery-03.jpg",
+        "source-original/images/gallery-04.jpg",
+        "source-original/images/gallery-05.jpg"
+      ],
+      "carouselWorks": true,
       "url": "https://labipe2023.github.io/?page=gallery",
       "http": 200,
       "jsErrors": []
